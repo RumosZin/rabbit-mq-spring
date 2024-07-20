@@ -3,7 +3,6 @@ package com.rabbit.demo;
 import lombok.*;
 
 @Getter
-@Setter
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor

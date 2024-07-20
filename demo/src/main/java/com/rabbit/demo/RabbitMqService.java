@@ -32,8 +32,11 @@ public class RabbitMqService {
      * 2. Producer 역할 -> Direct Exchange (메시지의 routing key와 정확히 일치하는 binding된 Queue로 routing)
      **/
     public void sendMessage(MessageDto messageDto) {
-        log.info("messagge send: {}",messageDto.toString());
-        this.rabbitTemplate.convertAndSend(exchangeName,routingKey,messageDto);
+        log.info("**Message Send**: {}",messageDto.toString());
+        log.info("messagge queue: {}", queueName);
+        log.info("messagge exchange: {}", exchangeName);
+        log.info("messagge routingKey: {}", routingKey);
+        this.rabbitTemplate.convertAndSend(exchangeName, routingKey, messageDto);
     }
 
     /**
@@ -42,6 +45,6 @@ public class RabbitMqService {
      **/
     @RabbitListener(queues = "${rabbitmq.queue.name}")
     public void receiveMessage(MessageDto messageDto) {
-        log.info("Received Message : {}",messageDto.toString());
+        log.info("**Message Received** : {}", messageDto.toString());
     }
 }
