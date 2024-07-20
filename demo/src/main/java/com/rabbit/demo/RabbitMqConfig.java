@@ -20,14 +20,23 @@ public class RabbitMqConfig {
 
     private final RabbitMqProperties rabbitMqProperties;
 
-    @Value("${rabbitmq.queue.name}")
-    private String queueName;
-
+    /**
+     * Exchange : Producer로부터 전달받은 메시지를 어떤 메시지 큐로 전송할 지 결정하는 장소
+     */
     @Value("${rabbitmq.exchange.name}")
     private String exchangeName;
 
+    /**
+     * Routing : Exchange에서 해당하는 key에 맞게 Queue에 분배
+     */
     @Value("${rabbitmq.routing.key}")
     private String routingKey;
+
+    /**
+     * Queue : Consumer가 소비하기 전까지 메시지가 보관되는 장소
+     */
+    @Value("${rabbitmq.queue.name}")
+    private String queueName;
 
     @Bean
     public Queue queue() {

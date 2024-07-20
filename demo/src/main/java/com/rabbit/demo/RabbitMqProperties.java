@@ -3,8 +3,11 @@ package com.rabbit.demo;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.context.properties.bind.ConstructorBinding;
 
+/**
+ * spring.rabbitmq 의 prefix 을 가지는 값들을
+ * RabbitMqProperties 클래스 필드로 바인딩 한 후 사용
+ */
 @ConfigurationProperties(prefix = "spring.rabbitmq")
 @AllArgsConstructor
 @Getter
